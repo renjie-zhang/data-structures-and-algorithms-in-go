@@ -1,6 +1,6 @@
 /*
  * @Descripttion:
- * @version:
+ * @version: linkedqueue 测试
  * @Author: renjie.zhang
  * @Date: 2019-08-22 18:32:16
  * @LastEditTime: 2019-08-22 19:34:44
