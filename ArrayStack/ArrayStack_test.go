@@ -1,3 +1,10 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: renjie.zhang
+ * @Date: 2019-09-04 21:51:30
+ * @LastEditTime: 2019-10-21 22:51:16
+ */
 package ArrayStack
 
 import (
@@ -6,24 +13,16 @@ import (
 )
 
 func TestArrayStack(t *testing.T) {
-	stack := &Stack{
-		MaxTop: 10,
-		Top:    -1,
-	}
+	stack := NewArrayStack(5)
 	stack.Push(23)
 	stack.Push(56)
-	stack.Push(89)
-	stack.Push(89)
-	stack.Push(89)
-	stack.Push(89)
-	stack.Push(89)
-	stack.Push(89)
-	stack.Push(89)
-	stack.Push(96)
+	stack.Push(87)
+	stack.Push(84)
+	stack.Push(87)
 	err := stack.Push(89)
 	fmt.Println(err)
 	val, _ := stack.Pull()
-	fmt.Printf("val=%d", val)
+	fmt.Printf("val=%d\n", val)
 }
 
 /*
