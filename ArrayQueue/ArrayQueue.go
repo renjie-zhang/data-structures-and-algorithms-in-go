@@ -1,11 +1,4 @@
-/*
- * @Descripttion: 使用切片实现队列
- * @version: v1
- * @Author: renjie.zhang
- * @Date: 2019-08-21 18:48:19
- * @LastEditTime: 2019-08-21 19:10:42
- */
-package ArrayQueue
+package arrayqueue
 
 import "fmt"
 
@@ -15,56 +8,55 @@ type ArrayQueue struct {
 	front    int
 	rear     int
 }
-
+//NewArrayQueue
 func NewArrayQueue(n int) *ArrayQueue {
 	return &ArrayQueue{make([]interface{}, n), n, 0, 0}
 }
 
 //判断是队列是否已满
-func (this *ArrayQueue) IsFull() bool {
-	if this.rear == this.capacity {
+func (queue *ArrayQueue) IsFull() bool {
+	if queue.rear == queue.capacity {
 		return true
 	}
 	return false
 }
 
 //判断队列是否为空
-func (this *ArrayQueue) IsEmpty() bool {
-	if this.rear == this.front {
+func (queue *ArrayQueue) IsEmpty() bool {
+	if queue.rear == queue.front {
 		return true
 	}
 	return false
 }
 
 //出队列操作
-func (this *ArrayQueue) DeQueue() interface{} {
-	if this.IsEmpty() {
+func (queue *ArrayQueue) DeQueue() interface{} {
+	if queue.IsEmpty() {
 		return nil
 	}
-	v := this.q[this.front]
-	this.front++
+	v := queue.q[queue.front]
+	queue.front++
 	return v
 }
 
 //入队操作
-func (this *ArrayQueue) EnQueue(v interface{}) bool {
-	if this.IsFull() {
+func (queue *ArrayQueue) EnQueue(v interface{}) bool {
+	if queue.IsFull() {
 		return false
 	}
-	this.q[this.rear] = v
-	this.rear++
+	queue.q[queue.rear] = v
+	queue.rear++
 	return true
 }
 
 //打印所有元素
-
-func (this *ArrayQueue) Show() string {
-	if this.IsEmpty() {
+func (queue *ArrayQueue) Show() string {
+	if queue.IsEmpty() {
 		return "queue is empty(⊙﹏⊙)"
 	}
 	result := "front"
-	for i := this.front; i <= this.rear-1; i++ {
-		result += fmt.Sprintf("<-%+v", this.q[i])
+	for i := queue.front; i <= queue.rear-1; i++ {
+		result += fmt.Sprintf("<-%+v", queue.q[i])
 	}
 	result += "<-rear"
 	return result

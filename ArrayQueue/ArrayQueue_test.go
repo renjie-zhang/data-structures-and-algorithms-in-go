@@ -1,16 +1,9 @@
-package ArrayQueue
+package arrayqueue
 
 import (
 	"testing"
 )
 
-/*
- * @Descripttion:
- * @version:
- * @Author: renjie.zhang
- * @Date: 2019-08-21 19:10:58
- * @LastEditTime: 2019-08-21 19:21:15
- */
 func TestArrayQueue(t *testing.T) {
 	q := NewArrayQueue(5)
 	q.EnQueue(6)
@@ -22,12 +15,12 @@ func TestArrayQueue(t *testing.T) {
 	q.DeQueue()
 	q.DeQueue()
 	t.Log("取出两个元素之后")
-	t.Log(q)
+	t.Log(q.Show())
 	q.DeQueue()
 	q.DeQueue()
 	q.DeQueue()
 	t.Log("全部取出之后")
-	t.Log()
+	t.Log(q.Show())
 }
 
 /*
