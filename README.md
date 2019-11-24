@@ -13,17 +13,22 @@
 - [x] [循环队列](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/CircleQueue)
 - [x] [使用数组实现栈](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/ArrayQueue)
 
-## 递归
-
-- [x] [约瑟夫环](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/Josephus)
-
 ## 数组与广义表
 
 - [x] [稀疏数组](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/SparseArray)
+- [ ] 螺旋方针
+
+## 递归
+
+- [x] [约瑟夫环](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/Josephus)
+- [ ] n皇后
+- [ ] 背包问题
 
 ## 树
 
 - [x] [二叉树](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/BinaryTree)
+- [ ] 霍夫曼树
+- [ ] 霍夫曼编码
 
 ## 查找
 
@@ -31,6 +36,8 @@
 - [x] [二分查找](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/Binaryfind)
 - [x] [哈希表](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/HashTable)
 - [x] [斐波那契查找](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/FibonacciFind)
+- [ ] 顺序查找
+- [ ] 平衡二叉树
 
 ## 排序
 
@@ -50,12 +57,26 @@
 
 ## 文件
 
+- [ ] 索引文件建立和查找
 
+## 图
+
+- [ ] 有向图
+- [ ] 无向图
+- [ ] 普利姆算法
+- [ ] 克鲁斯卡尔算法
+- [ ] 佛洛依德算法
+
+## 串
+
+- [ ] 文本串加密和解密
 
 ## 其他
 
 - [x] [素数](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/PrimeNumber)
 -  [ ] 斐波那契数列
+-  [ ] 判断字符串是否是回文
+-  [ ] 一个正整数的各位数之和
 
 
 
