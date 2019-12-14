@@ -8,6 +8,7 @@ type ArrayQueue struct {
 	front    int
 	rear     int
 }
+
 //NewArrayQueue
 func NewArrayQueue(n int) *ArrayQueue {
 	return &ArrayQueue{make([]interface{}, n), n, 0, 0}

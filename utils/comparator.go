@@ -1,11 +1,10 @@
 package utils
 
-
 //将会返回一个整数
 //整数	if a<b
 //0		if a==b
 //负数	if a>b
-type Comparator func(a,b interface{}) int
+type Comparator func(a, b interface{}) int
 
 // StringComparator provides a fast comparison on strings
 func StringComparator(a, b interface{}) int {
@@ -241,4 +240,3 @@ func TimeComparator(a, b interface{}) int {
 		return 0
 	}
 }
-

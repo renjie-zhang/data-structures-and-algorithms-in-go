@@ -6,9 +6,9 @@ import (
 )
 
 func TestHeapSort(t *testing.T) {
-	array := [6]int{4, 6, 8, 5, 9, 2}
+	array := []int{4, 6, 8, 5, 9, 2}
 	fmt.Println("排序前：", array)
-	HeapSort(&array)
+	HeapSort(array)
 	fmt.Println("排序后：", array)
 }
 

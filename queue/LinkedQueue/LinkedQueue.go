@@ -66,6 +66,6 @@ func (this *Queue) IsEmpty() bool {
 	return this.rear == nil
 }
 
-func(this *Queue) Empty(){
+func (this *Queue) Empty() {
 	this.rear = nil
 }

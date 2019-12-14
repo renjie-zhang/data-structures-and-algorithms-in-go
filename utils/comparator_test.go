@@ -5,7 +5,6 @@ import (
 	"time"
 )
 
-
 func TestIntComparator(t *testing.T) {
 
 	// i1,i2,expected
@@ -107,4 +106,3 @@ func TestCustomComparator(t *testing.T) {
 		}
 	}
 }
-

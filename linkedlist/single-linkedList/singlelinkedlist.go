@@ -5,38 +5,41 @@ import (
 	"fmt"
 )
 
-func assertListImplementtation(){
+func assertListImplementtation() {
 	var _ linkedlist.List = (*List)(nil)
 }
+
 //链表
-type List struct{
+type List struct {
 	head *element
 	tail *element
 	size int
 }
+
 //节点
-type element struct{
+type element struct {
 	value interface{}
-	next *element
+	next  *element
 }
+
 //链表实例化
-func New(values ...interface{}) *List{
+func New(values ...interface{}) *List {
 	list := &List{}
-	if len(values) >0{
+	if len(values) > 0 {
 		list.Add(values...)
 	}
 	return list
 }
 
 //添加节点
-func (list *List) Add(values ...interface{}){
-	for _,value := range values{
-		newElement := &element{value:value}
-		if list.size == 0{
+func (list *List) Add(values ...interface{}) {
+	for _, value := range values {
+		newElement := &element{value: value}
+		if list.size == 0 {
 			//如果链表为空则添加到头节点中
 			list.head = newElement
 			list.tail = newElement
-		}else {
+		} else {
 			//如果不为空，则添加到尾节点的下一节点
 			list.tail.next = newElement
 			list.tail = newElement
@@ -44,7 +47,6 @@ func (list *List) Add(values ...interface{}){
 		list.size++
 	}
 }
-
 
 //node节点
 type Node struct {

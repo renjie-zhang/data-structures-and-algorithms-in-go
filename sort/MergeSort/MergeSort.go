@@ -1,6 +1,39 @@
 package MergeSort
 
-func MergeSort(arr *[5]int, left int, right int, temp *[5]int) {
+func MergeSort(arr []int) []int {
+	length := len(arr)
+	if length < 2 {
+		return arr
+	}
+	middle := length / 2
+	left := arr[0:middle]
+	right := arr[middle:]
+	return merge(MergeSort(left), MergeSort(right))
+}
+
+func merge(left, right []int) []int {
+	var result []int
+	for len(left) != 0 && len(right) != 0 {
+		if left[0] <= right[0] {
+			result = append(result, left[0])
+			left = left[1:]
+		} else {
+			result = append(result, right[0])
+			right = right[1:]
+		}
+	}
+	for len(left) != 0 {
+		result = append(result, left[0])
+		left = left[1:]
+	}
+	for len(right) != 0 {
+		result = append(result, right[0])
+		right = right[1:]
+	}
+	return result
+}
+
+/*func MergeSort(arr []int, left int, right int, temp []int) {
 	if left < right {
 		mid := (left + right) / 2
 		MergeSort(arr, left, mid, temp)
@@ -10,7 +43,7 @@ func MergeSort(arr *[5]int, left int, right int, temp *[5]int) {
 }
 
 //合并的方法
-func Merge(arr *[5]int, left int, right int, mid int, temp *[5]int) {
+func Merge(arr []int, left int, right int, mid int, temp []int) {
 	//初始化
 	i := left
 	j := mid + 1
@@ -47,4 +80,4 @@ func Merge(arr *[5]int, left int, right int, mid int, temp *[5]int) {
 		t += 1
 		tempLeft += 1
 	}
-}
+}*/

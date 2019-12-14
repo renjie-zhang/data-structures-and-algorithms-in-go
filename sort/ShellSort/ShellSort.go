@@ -2,9 +2,8 @@ package ShellSort
 
 import "fmt"
 
-func ShellSort(arr *[5]int) {
-	fmt.Printf("排序之前的数组%d", arr)
-	fmt.Println()
+func ShellSort(arr []int) {
+	fmt.Println("排序前：", arr)
 	n := len(arr)
 	h := 1
 	for h < n/3 {
@@ -20,6 +19,5 @@ func ShellSort(arr *[5]int) {
 		}
 		h /= 3
 	}
-	fmt.Printf("排序之后的数组%d", arr)
-	fmt.Println()
+	fmt.Println("排序之后：", arr)
 }

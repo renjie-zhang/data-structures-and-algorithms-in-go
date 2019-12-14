@@ -2,13 +2,13 @@ package InsertSort
 
 import "fmt"
 
-func InsertSort(arr *[5]int) {
+func InsertSort(arr []int) {
 	fmt.Printf("排序之前的数组%d", arr)
 	fmt.Println()
 	for i := 1; i < len(arr); i++ {
 		insertValue := arr[i]
 		insertIndex := i - 1
-		for insertIndex >= 0 && arr[insertIndex] < insertValue {
+		for insertIndex >= 0 && arr[insertIndex] > insertValue {
 			//将数据后移
 			arr[insertIndex+1] = arr[insertIndex]
 			insertIndex--

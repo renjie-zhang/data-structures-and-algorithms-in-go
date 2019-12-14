@@ -1,6 +1,6 @@
 package QuickSort
 
-func QuickSort(left int, right int, arr *[5]int) {
+func QuickSort(left int, right int, arr []int) {
 
 	l := left
 	r := right
