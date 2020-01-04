@@ -2,6 +2,7 @@ package SelectSort
 
 import "testing"
 
+//选择排序测试
 func TestSelectSort(t *testing.T) {
 	arr := []int{23, 4, 90, 3, 56}
 	SelectSort(arr)

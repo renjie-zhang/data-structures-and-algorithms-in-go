@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+//堆排序测试
 func TestHeapSort(t *testing.T) {
 	array := []int{4, 6, 8, 5, 9, 2}
 	fmt.Println("排序前：", array)

@@ -1,11 +1,13 @@
 package HeapSort
 
+//堆排序
 func HeapSort(array []int) {
-	for i := len(array)/2 - 1; i > 0; i-- {
-		ChangeToBigHeap(array, i, len(array))
+	length := len(array)
+	for i := length/2 - 1; i > 0; i-- {
+		ChangeToBigHeap(array, i, length)
 	}
 	var temp int
-	for i := len(array) - 1; i > 0; i-- {
+	for i := length - 1; i > 0; i-- {
 		temp, array[i] = array[i], temp
 		ChangeToBigHeap(array, 0, i)
 	}

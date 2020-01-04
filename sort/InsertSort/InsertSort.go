@@ -2,10 +2,12 @@ package InsertSort
 
 import "fmt"
 
+//插入排序
 func InsertSort(arr []int) {
 	fmt.Printf("排序之前的数组%d", arr)
 	fmt.Println()
-	for i := 1; i < len(arr); i++ {
+	length := len(arr)
+	for i := 1; i < length; i++ {
 		insertValue := arr[i]
 		insertIndex := i - 1
 		for insertIndex >= 0 && arr[insertIndex] > insertValue {

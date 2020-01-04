@@ -2,6 +2,7 @@ package InsertSort
 
 import "testing"
 
+//插入排序测试
 func TestInsertSort(t *testing.T) {
 	arr := []int{23, 4, 90, 3, 56}
 	InsertSort(arr)
