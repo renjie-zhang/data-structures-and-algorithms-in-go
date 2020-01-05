@@ -5,7 +5,7 @@
  * @Date: 2019-08-22 18:17:58
  * @LastEditTime: 2019-08-22 18:31:20
  */
-package LinkedQueue
+package linkedqueue
 
 type Node struct {
 	data int

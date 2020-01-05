@@ -1,4 +1,4 @@
-package ShellSort
+package shellsort
 
 import "testing"
 

@@ -1,4 +1,4 @@
-package BubbleSort
+package bubblesort
 
 import "fmt"
 

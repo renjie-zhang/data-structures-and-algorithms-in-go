@@ -1,4 +1,4 @@
-package InsertSort
+package insertsort
 
 import "testing"
 

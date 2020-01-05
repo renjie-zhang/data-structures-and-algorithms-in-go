@@ -5,7 +5,7 @@
  * @Date: 2019-08-22 18:32:16
  * @LastEditTime: 2019-08-22 19:34:44
  */
-package LinkedQueue
+package linkedqueue
 
 import (
 	"fmt"

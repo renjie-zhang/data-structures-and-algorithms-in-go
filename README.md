@@ -21,7 +21,7 @@
 ## 递归
 
 - [x] [约瑟夫环](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/Josephus)
-- [ ] n皇后
+- [x] n皇后
 - [ ] 背包问题
 
 ## 树

@@ -1,4 +1,4 @@
-package HeapSort
+package heapsort
 
 //堆排序
 func HeapSort(array []int) {

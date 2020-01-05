@@ -32,5 +32,5 @@ func TestArrayQueue(t *testing.T) {
     ArrayQueue_test.go:29: 全部取出之后
     ArrayQueue_test.go:30:
 PASS
-ok      exercise/ds_algo/study/ArrayQueue       0.282s
+ok      exercise/ds_algo/study/arrayqueue       0.282s
 */

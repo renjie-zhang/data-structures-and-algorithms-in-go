@@ -5,7 +5,7 @@
  * @Date: 2019-08-21 19:22:30
  * @LastEditTime: 2019-08-21 19:41:39
  */
-package CircleQueue
+package circlequeue
 
 import "fmt"
 

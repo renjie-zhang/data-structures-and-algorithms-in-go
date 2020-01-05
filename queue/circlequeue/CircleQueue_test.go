@@ -5,7 +5,7 @@
  * @Date: 2019-08-21 19:41:24
  * @LastEditTime: 2019-08-22 09:50:22
  */
-package CircleQueue
+package circlequeue
 
 import "testing"
 

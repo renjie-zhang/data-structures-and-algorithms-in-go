@@ -1,4 +1,4 @@
-package QuickSort
+package quicksort
 
 import (
 	"fmt"
