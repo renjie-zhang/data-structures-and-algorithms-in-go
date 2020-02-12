@@ -15,7 +15,7 @@ type HashTable struct {
 //生成hash
 func generateHash(s string) uint8 {
 	hash := fnv.New32a()
-	hash.Write([]byte(s))
+	_, _ = hash.Write([]byte(s))
 	return uint8(hash.Sum32() % 256)
 }
 

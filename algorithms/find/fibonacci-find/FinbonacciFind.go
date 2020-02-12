@@ -1,6 +1,7 @@
 package FibonacciFind
 
-func FinbonacciFind(array *[6]int, findValue int) int {
+//TODO 修改问题
+func FinbonacciFind(array []int, findValue int) int {
 
 	low := 0
 	high := len(array) - 1
@@ -36,12 +37,12 @@ func FinbonacciFind(array *[6]int, findValue int) int {
 }
 
 //生成Fibonacci数列
-func fib() *[20]int {
+func fib() []int {
 	var f [20]int
 	f[0] = 1
 	f[1] = 1
 	for i := 2; i < 20; i++ {
 		f[i] = f[i-1] + f[i-2]
 	}
-	return &f
+	return f
 }

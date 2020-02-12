@@ -2,9 +2,11 @@ package SingleLinkedList
 
 import (
 	"Data-Structures-and-Algorithms-Go/linkedlist"
+	"Data-Structures-and-Algorithms-Go/utils"
 	"fmt"
 )
 
+// TODO 修改测试
 func assertListImplementtation() {
 	var _ linkedlist.List = (*List)(nil)
 }
@@ -14,6 +16,46 @@ type List struct {
 	head *element
 	tail *element
 	size int
+}
+
+func (list *List) Get(index int) (interface{}, bool) {
+	panic("implement me")
+}
+
+func (list *List) Remove(index int) {
+	panic("implement me")
+}
+
+func (list *List) Contains(values ...interface{}) {
+	panic("implement me")
+}
+
+func (list *List) Sort(comparator utils.Comparator) {
+	panic("implement me")
+}
+
+func (list *List) Swap(index1, index2 int) {
+	panic("implement me")
+}
+
+func (list *List) Insert(index int, values ...interface{}) {
+	panic("implement me")
+}
+
+func (list *List) Set(index int, value interface{}) {
+	panic("implement me")
+}
+
+func (list *List) Empty() bool {
+	panic("implement me")
+}
+
+func (list *List) Size() int {
+	panic("implement me")
+}
+
+func (list *List) Clear() {
+	panic("implement me")
 }
 
 //节点
