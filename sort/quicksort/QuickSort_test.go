@@ -1,20 +1,30 @@
 package quicksort
 
 import (
-	"fmt"
 	"testing"
 )
 
 //快速排序测试
 func TestQuickSort(t *testing.T) {
-	array := []int{34, 2, 65, 32, 9}
-	temp := QuickSort(array)
-	fmt.Println(temp)
+	tests := []struct {
+		in       []int
+		expected []int
+	}{
+		{[]int{}, []int{}},
+		{[]int{1}, []int{1}},
+		{[]int{1, 2}, []int{1, 2}},
+		{[]int{2, 1}, []int{1, 2}},
+		{[]int{2, 1, 3}, []int{1, 2, 3}},
+		{[]int{1, 1, 1}, []int{1, 1, 1}},
+		{[]int{2, 1, 2}, []int{1, 2, 2}},
+		{[]int{1, 2, 4, 3, 6, 5}, []int{1, 2, 3, 4, 5, 6}},
+		{[]int{6, 2, 4, 3, 1, 5}, []int{1, 2, 3, 4, 5, 6}},
+		{[]int{6, 5, 4, 3, 2, 1}, []int{1, 2, 3, 4, 5, 6}},
+	}
+
+	for _, tt := range tests {
+		QuickSort(tt.in, 0, len(tt.in)-1)
+		Equal(t, tt.expected, tt.in)
+	}
 }
 
-/*
-=== RUN   TestQuickSort
-原数组为[34 2 65 32 9]
-排序过后数组为[2 9 32 34 65]
---- PASS: TestQuickSort (0.00s)
-*/
