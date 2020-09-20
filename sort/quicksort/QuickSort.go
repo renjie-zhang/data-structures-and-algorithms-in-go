@@ -5,30 +5,30 @@ import (
 	"testing"
 )
 
-func QuickSort(arr []int,low int,high int){
-	if low > high{
+func QuickSort(arr []int, low int, high int) {
+	if low > high {
 		return
 	}
-	j := partition(arr,low,high)
-	QuickSort(arr,low,j-1)
-	QuickSort(arr,j+1,high)
+	j := partition(arr, low, high)
+	QuickSort(arr, low, j-1)
+	QuickSort(arr, j+1, high)
 }
 
-func partition(arr []int,low int, high int, ) int {
+func partition(arr []int, low int, high int) int {
 	i := low
 	j := high
 	temp := arr[low]
-	for i <= j{
-		for i<high && arr[i] > temp{
+	for i <= j {
+		for i < high && arr[i] > temp {
 			i++
 		}
-		for j > low && arr[j] <= temp{
+		for j > low && arr[j] <= temp {
 			j--
 		}
-		if i < j{
-			arr[i],arr[j] = arr[j],arr[i]
-		}else {
-			arr[i],arr[high] = arr[high],arr[i]
+		if i < j {
+			arr[i], arr[j] = arr[j], arr[i]
+		} else {
+			arr[i], arr[high] = arr[high], arr[i]
 		}
 	}
 
