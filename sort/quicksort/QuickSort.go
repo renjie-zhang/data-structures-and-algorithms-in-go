@@ -1,46 +1,42 @@
 package quicksort
 
-//快速排序
-func QuickSort(arr []int) []int {
-	partition(0, len(arr)-1, arr)
-	return arr
+import (
+	"reflect"
+	"testing"
+)
+
+func QuickSort(arr []int, low int, high int) {
+	if low > high {
+		return
+	}
+	j := partition(arr, low, high)
+	QuickSort(arr, low, j-1)
+	QuickSort(arr, j+1, high)
 }
 
-func partition(left int, right int, arr []int) {
-
-	l := left
-	r := right
-	pivot := arr[(l+r)/2]
-	for l < r {
-		for arr[l] < pivot {
-			l++
+func partition(arr []int, low int, high int) int {
+	i := low
+	j := high
+	temp := arr[low]
+	for i <= j {
+		for i < high && arr[i] > temp {
+			i++
 		}
-		for arr[r] > pivot {
-			r--
+		for j > low && arr[j] <= temp {
+			j--
 		}
-		if l >= r {
-			break
+		if i < j {
+			arr[i], arr[j] = arr[j], arr[i]
+		} else {
+			arr[i], arr[high] = arr[high], arr[i]
 		}
-		//交换
-		arr[l], arr[r] = arr[r], arr[l]
-		if arr[l] == pivot {
-			r--
-		}
-		if arr[r] == pivot {
-			l++
-		}
-	}
-	if l == r {
-		l++
-		r--
-	}
-	//向左递归
-	if left < r {
-		partition(left, r, arr)
-	}
-	//向右递归
-	if right > l {
-		partition(l, right, arr)
 	}
 
+	return i
+}
+
+func Equal(t *testing.T, expected, result interface{}) {
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("should be %v instead of %v", expected, result)
+	}
 }
