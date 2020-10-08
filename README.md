@@ -12,6 +12,7 @@
 - [x] [使用链表实现队列](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/queue/linkedqueue)
 - [x] [循环队列](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/queue/circlequeue)
 - [x] [使用数组实现栈](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/queue/arrayqueue)
+- [x] [LRU](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/blob/Dev/linkedlist/lru/lru.go)
 
 ## 数组与广义表
 
