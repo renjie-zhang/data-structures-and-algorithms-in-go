@@ -16,22 +16,15 @@ func QuickSort(arr []int, low int, high int) {
 
 func partition(arr []int, low int, high int) int {
 	i := low
-	j := high
-	temp := arr[low]
-	for i <= j {
-		for i < high && arr[i] > temp {
+	// 使用最右边作为基准
+	temp := arr[high]
+	for j := low;j< high;j++{
+		if arr[j] < temp{
+			arr[i],arr[j] = arr[j],arr[i]
 			i++
 		}
-		for j > low && arr[j] <= temp {
-			j--
-		}
-		if i < j {
-			arr[i], arr[j] = arr[j], arr[i]
-		} else {
-			arr[i], arr[high] = arr[high], arr[i]
-		}
 	}
-
+	arr[i],arr[high] = arr[high],arr[i]
 	return i
 }
 
