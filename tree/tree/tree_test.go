@@ -1,7 +1,6 @@
 package BinaryTree
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -22,7 +21,7 @@ func TestBinaryTree(t *testing.T) {
 	three.Left = second
 	three.Right = four
 	six.Left = five
-
+	/*
 	fmt.Println("前序遍历")
 	binarytree.PreOrder()
 
@@ -32,6 +31,9 @@ func TestBinaryTree(t *testing.T) {
 	fmt.Println("后序遍历")
 	binarytree.PostOrder()
 
+	// 层次遍历
+	LevelOrder(first)
+	*/
 }
 
 /*
@@ -60,4 +62,15 @@ func TestBinaryTree(t *testing.T) {
 	no:6  name:f
 	--- PASS: TestBinaryTree (0.10s)
 	PASS
+
+	层次遍历
+	this is 1 level
+	no:1  name:a
+	this is 2 level
+	no:3  name:c
+	no:6  name:f
+	this is 3 level
+	no:2  name:b
+	no:4  name:d
+	no:5  name:e
 */
