@@ -34,6 +34,12 @@ func TestBinaryTree(t *testing.T) {
 	// 层次遍历
 	LevelOrder(first)
 	*/
+	// 非递归先序遍历
+	//first.preOrder()
+	// 非递归中序遍历
+	//first.infixOrder()
+	// 非递归后序遍历
+	first.postOrder()
 }
 
 /*
