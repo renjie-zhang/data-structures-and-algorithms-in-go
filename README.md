@@ -2,7 +2,6 @@
 
 [未完成，正在进行中......]
 
-[TOC]
 
 ## 数据结构
 
@@ -31,7 +30,7 @@
 
 #### 队列
 
-实际中的应用：LRU Cache[[link](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/blob/Dev/linkedlist/lru/lru.go)]
+实际中的应用：LRU Cache
 
 1. 普通队列
 
@@ -92,8 +91,7 @@
 ### 排序算法
 
 #### 冒泡排序
-https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/sort/bubblesort
-
+正在进行中......
 
 #### 插入排序
 
