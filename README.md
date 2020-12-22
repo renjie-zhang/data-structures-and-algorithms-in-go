@@ -1,86 +1,200 @@
-# Go语言数据结构与算法
+# Go语言实现数据结构与算法
 
-以在大学期间实验课中的数据结构与算法实验的实现为基础，以及在学习过程中看到的算法，数据结构的一个实现。不间断进行更新。
+[未完成，正在进行中......]
 
+[TOC]
 
-  ## 线性表
-- [x] [单向链表](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/linkedlist/single-linkedList)
-- [x] [双向链表](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/linkedlist/double-linkedlist)
+## 数据结构
 
-## 栈与队列
+### 线性表：
 
-- [x] [使用链表实现队列](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/queue/linkedqueue)
-- [x] [循环队列](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/queue/circlequeue)
-- [x] [使用数组实现栈](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/queue/arrayqueue)
-- [x] [LRU](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/blob/Dev/linkedlist/lru/lru.go)
+#### 数组
 
-## 数组与广义表
+数组是线性表，使用一组连续的内存空间存储一组具有相同类型的数据
 
-- [x] [稀疏数组](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/algorithms/sparse-array)
-- [ ] 螺旋方针
+#### 链表
 
-## 递归
+1. 单链表
+2. 双链表
+3. 循环链表
+4. 静态链表
 
-- [x] [约瑟夫环](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/algorithms/josephus)
-- [x] [n皇后](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/algorithms/eightqueue)
-- [ ] 背包问题
+#### 跳表
 
-## 树
+正在进行中......
 
-- [x] [二叉树](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/tree/binary-tree)
-- [ ] 霍夫曼树
-- [ ] 霍夫曼编码
+### 受限的线性表：
 
-## 查找
+#### 栈
 
-- [x] [插入查找](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/algorithms/find/insert-value-find)
-- [x] [二分查找](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/algorithms/find/binary-find)
-- [x] [哈希表](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/hash/hash-table)
-- [x] [斐波那契查找](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/algorithms/find/fibonacci-find)
-- [ ] 顺序查找
-- [ ] 平衡二叉树
+实际中的应用：浏览器前进与后退、括号匹配、表达式计算
 
-## 排序
+#### 队列
 
-- [x] [冒泡排序](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/sort/bubblesort)
+实际中的应用：LRU Cache[[link](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/blob/Dev/linkedlist/lru/lru.go)]
 
-- [x] [快速排序](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/sort/quicksort)
+1. 普通队列
 
-- [x] [选择排序](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/sort/selectsort)
+2. 双边队列
 
-- [x] [希尔排序](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/sort/shellsort)
+3. 优先队列
 
-- [x] [归并排序](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/sort/mergesort)
+#### 堆
 
-- [x] [堆排序](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/sort/heapsort)
+实际中的引用：第K大元素
 
-- [x] [插入排序](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/sort/insertsort)
-
-## 文件
-
-- [ ] 索引文件建立和查找
-
-## 图
-
-- [ ] 有向图
-- [ ] 无向图
-- [ ] 普利姆算法
-- [ ] 克鲁斯卡尔算法
-- [ ] 佛洛依德算法
-
-## 串
-
-- [ ] 文本串加密和解密
-
-## 其他
-
-- [x] [素数](https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/algorithms/prime-number)
--  [ ] 斐波那契数列
--  [ ] 判断字符串是否是回文
--  [ ] 一个正整数的各位数之和
+大顶堆小顶堆
 
 
 
-备注：Java语言版本 [链接]: https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Java
+### 树
+
+#### 二叉树
+
+正在进行中......
+
+#### 完全二叉树
+
+正在进行中......
+
+#### 满二叉树
+
+正在进行中......
+
+#### 二叉搜索树
+
+正在进行中......
+
+#### 红黑树
+
+正在进行中......
+
+#### 哈夫曼树
+
+正在进行中......
+
+#### 字典树
+
+正在进行中......
+
+#### B+树
+
+正在进行中......
+
+### 图
+
+正在进行中......
+
+
+
+## 算法
+
+### 排序算法
+
+#### 冒泡排序
+https://github.com/renjie-zhang/Data-Structures-and-Algorithms-Go/tree/master/sort/bubblesort
+
+
+#### 插入排序
+
+正在进行中......
+
+#### 选择排序
+
+正在进行中......
+
+#### 快速排序
+
+正在进行中......
+
+#### 归并排序
+
+正在进行中......
+
+#### 桶排序
+
+正在进行中......
+
+#### 计数排序
+
+正在进行中......
+
+#### 基数排序
+
+正在进行中......
+
+### 查找算法
+
+#### 二分查找
+
+正在进行中......
+
+#### 二叉查找树
+
+正在进行中......
+
+#### 平衡二叉查找树
+
+正在进行中......
+
+### 递归
+
+正在进行中......
+
+### 分治
+
+正在进行中......
+
+### 贪心
+
+正在进行中......
+
+### 动态规划
+
+正在进行中......
+
+### 并查集、线段树、跳表
+
+正在进行中......
+
+
+
+### 字符串匹配算法
+
+正在进行中......
+
+### 哈希算法
+
+正在进行中......
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
