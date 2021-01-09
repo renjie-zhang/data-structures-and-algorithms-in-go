@@ -11,7 +11,8 @@ type List interface {
 	Swap(index1, index2 int)
 	Insert(index int, values ...interface{})
 	Set(index int, value interface{})
-	Empty() bool
+	IsEmpty() bool
 	Size() int
 	Clear()
+	ToArray() []interface{}
 }

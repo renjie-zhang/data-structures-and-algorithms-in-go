@@ -1,60 +1,58 @@
 package SingleLinkedList
 
 import (
-	"Data-Structures-and-Algorithms-Go/linkedlist"
 	"Data-Structures-and-Algorithms-Go/utils"
 	"fmt"
 )
 
-// TODO 修改测试
-func assertListImplementtation() {
-	var _ linkedlist.List = (*List)(nil)
-}
-
 //链表
-type List struct {
+type SingleList struct {
 	head *element
 	tail *element
 	size int
 }
 
-func (list *List) Get(index int) (interface{}, bool) {
+func (list *SingleList) ToArray() []interface{} {
 	panic("implement me")
 }
 
-func (list *List) Remove(index int) {
+func (list *SingleList) Get(index int) (interface{}, bool) {
 	panic("implement me")
 }
 
-func (list *List) Contains(values ...interface{}) {
+func (list *SingleList) Remove(index int) {
 	panic("implement me")
 }
 
-func (list *List) Sort(comparator utils.Comparator) {
+func (list *SingleList) Contains(values ...interface{}) {
 	panic("implement me")
 }
 
-func (list *List) Swap(index1, index2 int) {
+func (list *SingleList) Sort(comparator utils.Comparator) {
 	panic("implement me")
 }
 
-func (list *List) Insert(index int, values ...interface{}) {
+func (list *SingleList) Swap(index1, index2 int) {
 	panic("implement me")
 }
 
-func (list *List) Set(index int, value interface{}) {
+func (list *SingleList) Insert(index int, values ...interface{}) {
 	panic("implement me")
 }
 
-func (list *List) Empty() bool {
+func (list *SingleList) Set(index int, value interface{}) {
 	panic("implement me")
 }
 
-func (list *List) Size() int {
+func (list *SingleList) IsEmpty() bool {
 	panic("implement me")
 }
 
-func (list *List) Clear() {
+func (list *SingleList) Size() int {
+	panic("implement me")
+}
+
+func (list *SingleList) Clear() {
 	panic("implement me")
 }
 
@@ -65,8 +63,8 @@ type element struct {
 }
 
 //链表实例化
-func New(values ...interface{}) *List {
-	list := &List{}
+func New(values ...interface{}) *SingleList {
+	list := &SingleList{}
 	if len(values) > 0 {
 		list.Add(values...)
 	}
@@ -74,7 +72,7 @@ func New(values ...interface{}) *List {
 }
 
 //添加节点
-func (list *List) Add(values ...interface{}) {
+func (list *SingleList) Add(values ...interface{}) {
 	for _, value := range values {
 		newElement := &element{value: value}
 		if list.size == 0 {
