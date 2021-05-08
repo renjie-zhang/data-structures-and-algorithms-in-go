@@ -1,10 +1,3 @@
-/*
- * @Descripttion: 双向链表
- * @version:
- * @Author: renjie.zhang
- * @Date: 2019-08-26 18:25:09
- * @LastEditTime: 2019-08-26 18:46:01
- */
 package DoubleLinkedList
 
 type Node struct {
