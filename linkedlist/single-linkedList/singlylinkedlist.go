@@ -50,7 +50,7 @@ func (s *SinglyLinkedList) InsertFirst(value int) {
 	}
 	s.head = data
 }
-
+// InsertLast Insert a Node to SinglyLinkedList
 func (s *SinglyLinkedList) InsertLast(value int) {
 	data := &Node{data: value}
 	if s.head == nil {
