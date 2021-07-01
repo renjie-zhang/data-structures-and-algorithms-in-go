@@ -24,3 +24,6 @@ func InsertSort(arr []int) {
 	fmt.Println()
 
 }
+
+
+
