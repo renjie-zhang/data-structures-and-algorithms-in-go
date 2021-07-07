@@ -16,183 +16,126 @@
  */
 package lru
 
-import (
-	"container/list"
-	"errors"
-)
-
-// EvictCallBack is used to get a callback when a cache element is evicted
-type EvictCallBack func(key interface{}, value interface{})
-
-type LRU struct {
-	size      int
-	evictList *list.List
-	items     map[interface{}]*list.Element
-	onEvict   EvictCallBack
+type Element struct {
+	prev,next *Element
+	Key interface{}
+	Value interface{}
 }
 
-type entry struct {
-	key   interface{}
-	value interface{}
+func (e *Element) Next() *Element{
+	return e.next
 }
 
-// LRUCache is a simple LRU interface
-type LRUCache interface {
-	// Add a value to the cache
-	Add(key, value interface{}) bool
-	// Return key's value from the cache
-	Get(key interface{}) (value interface{}, ok bool)
-	// Check if a key exists in cache
-	Contains(key interface{}) (ok bool)
-	// Return key's value without update
-	Peek(key interface{}) (value interface{}, ok bool)
-	// Remove a key from the cache
-	Remove(key interface{}) bool
-	// Removes the oldest element from the cache
-	RemoveOldest(interface{}, interface{}, bool)
-	// Get the oldest element from the cache
-	GetOldest(interface{}, interface{}, bool)
-	// Return a slice of the keys in the cache
-	Keys() []interface{}
-	// Return the number of items in the cache
-	Len() int
-	// Clear all cache element
-	Purge()
-	// Resize the cache
-	Resize(int) int
+func (e *Element) Prev() *Element{
+	return e.prev
 }
 
-func NewLRU(size int, onEvict EvictCallBack) (*LRU, error) {
-	if size <= 0 {
-		return nil, errors.New("size must bigger than 0")
+
+type LRUCache struct {
+	cache map[interface{}]*Element
+	head *Element
+	tail *Element
+	capacity int
+}
+
+func New(capacity int) *LRUCache {
+	return &LRUCache{
+		cache:    make(map[interface{}]*Element),
+		head:     nil,
+		tail:     nil,
+		capacity: capacity,
 	}
-	c := &LRU{
-		size:      size,
-		evictList: list.New(),
-		items:     make(map[interface{}]*list.Element),
-		onEvict:   onEvict,
-	}
-	return c, nil
 }
 
-func (c *LRU) Purge() {
-	for k, v := range c.items {
-		if c.onEvict != nil {
-			c.onEvict(k, v.Value.(*entry).value)
+func(l *LRUCache) Put(key interface{},value interface{}){
+	// 如果在cache中存在，那么将此value放到头部
+	if e,ok := l.cache[key];ok{
+		e.Value = value
+		l.refresh(e)
+		return
+	}
+	// 如果容量为0，那么直接返回，如果容量已经满了，此时将删除最后一个节点，然后将value添加到头部
+	if l.capacity == 0{
+		return
+	}else if len(l.cache) >= l.capacity {
+		delete(l.cache,l.tail.Key)
+		l.remove(l.tail)
+	}
+	e := &Element{nil,l.head,key,value}
+	l.cache[key] = e
+	if len(l.cache) != 1{
+		l.head.prev = e
+	}else {
+		l.tail = e
+	}
+	l.head = e
+	l.capacity++
+}
+
+func (l *LRUCache) Get(key interface{}) (interface{},bool){
+	if e,ok := l.cache[key];ok{
+		l.refresh(e)
+		return e.Value,true
+	}
+	return nil,false
+}
+
+func (l *LRUCache) Delete(key interface{}){
+	if e,ok := l.cache[key];ok{
+		delete(l.cache,key)
+		l.remove(e)
+	}
+}
+
+func (l *LRUCache) Range(f func(key,value interface{}) bool)  {
+	for i:= l.head;i != nil; i= i.Next(){
+		if !f(i.Key,i.Value){
+			break
 		}
-		delete(c.items, k)
 	}
-	c.evictList.Init()
 }
 
-func (c *LRU) Add(key, value interface{}) (evicted bool) {
-	// check existing item
-	if ent, ok := c.items[key]; ok {
-		c.evictList.MoveToFront(ent)
-		ent.Value.(*entry).value = value
-		return false
-	}
-	// Add new item
-	ent := &entry{key, value}
-	entry := c.evictList.PushFront(ent)
-	c.items[key] = entry
-
-	evict := c.evictList.Len() > c.size
-	if evict {
-		c.removeOldest()
-	}
-	return evict
+func (l *LRUCache) Front() *Element{
+	return l.head
 }
 
-func (c *LRU) Get(key interface{}) (value interface{}, ok bool) {
-	if ent, ok := c.items[key]; ok {
-		c.evictList.MoveToFront(ent)
-		if ent.Value.(*entry) == nil {
-			return nil, false
+func(l *LRUCache) Back() *Element{
+	return l.tail
+}
+
+func(l *LRUCache) Len() int{
+	return len(l.cache)
+}
+
+func (l *LRUCache) Capacity() int{
+	return l.capacity
+}
+
+func (l *LRUCache) refresh(e *Element){
+	if e.prev != nil{
+		e.prev.next = e.next
+		if e.next == nil{
+			l.tail = e.prev
+		}else {
+			e.next.prev = e.Prev()
 		}
-		return ent.Value.(*entry).value, true
-	}
-	return
-}
-
-func (c *LRU) Contains(key interface{}) (ok bool) {
-	_, ok = c.items[key]
-	return
-}
-
-func (c *LRU) Peek(key interface{}) (value interface{}, ok bool) {
-	var ent *list.Element
-	if ent, ok = c.items[key]; ok {
-		return ent.Value.(*entry).value, true
-	}
-	return nil, ok
-}
-
-func (c *LRU) Remove(key interface{}) (present bool) {
-	if ent, ok := c.items[key]; ok {
-		c.removeElement(ent)
-		return true
-	}
-	return false
-}
-
-func (c *LRU) RemoveOldest() (key, value interface{}, ok bool) {
-	ent := c.evictList.Back()
-	if ent != nil {
-		c.removeElement(ent)
-		kv := ent.Value.(*entry)
-		return kv.key, kv.value, true
-	}
-	return nil, nil, false
-}
-
-func (c *LRU) GetOldest() (key, value interface{}, ok bool) {
-	ent := c.evictList.Back()
-	if ent != nil {
-		kv := ent.Value.(*entry)
-		return kv.key, kv.value, true
-	}
-	return nil, nil, false
-}
-
-func (c *LRU) Keys() []interface{} {
-	keys := make([]interface{}, len(c.items))
-	i := 0
-	for ent := c.evictList.Back(); ent != nil; ent = ent.Prev() {
-		keys[i] = ent.Value.(*entry).key
-		i++
-	}
-	return keys
-}
-
-func (c *LRU) Resize(size int) (evicted int) {
-	diff := c.Len() - size
-	if diff < 0 {
-		diff = 0
-	}
-	for i := 0; i < diff; i++ {
-		c.removeOldest()
-	}
-	c.size = size
-	return diff
-}
-
-func (c *LRU) Len() int {
-	return c.evictList.Len()
-}
-
-func (c *LRU) removeElement(e *list.Element) {
-	c.evictList.Remove(e)
-	kv := e.Value.(*entry)
-	delete(c.items, kv.key)
-	if c.onEvict != nil {
-		c.onEvict(kv.key, kv.value)
+		e.prev = nil
+		e.next = l.head
+		l.head.prev = e
+		l.head = e
 	}
 }
 
-func (c *LRU) removeOldest() {
-	back := c.evictList.Back()
-	if back != nil {
-		c.removeElement(back)
+func (l *LRUCache) remove(e *Element){
+	if e.prev == nil{
+		l.head = e.next
+	}else {
+		e.prev.next = e.next
 	}
+	if e.next == nil{
+		l.tail = e.prev
+	}else {
+		e.next.prev = e.prev
+	}
+	l.capacity--
 }
