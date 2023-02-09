@@ -1,7 +1,7 @@
-package mergesort
+package merge
 
-//归并排序
-func MergeSort(arr []int) []int {
+// sort 归并排序
+func sort(arr []int) []int {
 	length := len(arr)
 	if length < 2 {
 		return arr
@@ -9,7 +9,7 @@ func MergeSort(arr []int) []int {
 	middle := length / 2
 	left := arr[0:middle]
 	right := arr[middle:]
-	return merge(MergeSort(left), MergeSort(right))
+	return merge(sort(left), sort(right))
 }
 
 func merge(left []int, right []int) []int {

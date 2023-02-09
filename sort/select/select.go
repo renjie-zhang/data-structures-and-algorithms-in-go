@@ -1,11 +1,7 @@
-package selectsort
+package _select
 
-import "fmt"
-
-//选择排序
-func SelectSort(arr []int) {
-
-	fmt.Println("排序前：", arr)
+// 选择排序
+func sort(arr []int) {
 	length := len(arr)
 	for i := 0; i < length-1; i++ {
 		minValue := arr[i]
@@ -20,5 +16,4 @@ func SelectSort(arr []int) {
 			arr[i], arr[minIndex] = arr[minIndex], arr[i]
 		}
 	}
-	fmt.Println("排序之后：", arr)
 }

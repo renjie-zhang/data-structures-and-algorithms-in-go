@@ -10,7 +10,7 @@ import (
 func TestSort(t *testing.T) {
 	array1 := []int{2, 5, 10, 26, 57}
 	array2 := []int{2, 5, 10, 26, 57}
-	var result = Sort(array1)
+	var result = sort(array1)
 	fmt.Println("排序后", result)
 	assert.Equal(t, result, array2)
 
@@ -19,7 +19,7 @@ func TestSort(t *testing.T) {
 func BenchmarkSort(b *testing.B) {
 	array1 := []int{2, 5, 10, 26, 57}
 	for i := 0; i < b.N; i++ {
-		Sort(array1)
+		sort(array1)
 	}
 }
 

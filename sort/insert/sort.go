@@ -1,11 +1,7 @@
-package insertsort
+package insert
 
-import "fmt"
-
-//插入排序
-func InsertSort(arr []int) {
-	fmt.Printf("排序之前的数组%d", arr)
-	fmt.Println()
+// sort 插入排序
+func sort(arr []int) []int {
 	length := len(arr)
 	for i := 1; i < length; i++ {
 		insertValue := arr[i]
@@ -20,7 +16,5 @@ func InsertSort(arr []int) {
 			arr[insertIndex+1] = insertValue
 		}
 	}
-	fmt.Printf("排序之后的数组%d", arr)
-	fmt.Println()
-
+	return arr
 }

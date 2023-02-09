@@ -1,10 +1,7 @@
-package shellsort
+package shell
 
-import "fmt"
-
-//希尔排序
-func ShellSort(arr []int) {
-	fmt.Println("排序前：", arr)
+// 希尔排序
+func sort(arr []int) {
 	n := len(arr)
 	h := 1
 	for h < n/3 {
@@ -20,5 +17,4 @@ func ShellSort(arr []int) {
 		}
 		h /= 3
 	}
-	fmt.Println("排序之后：", arr)
 }
