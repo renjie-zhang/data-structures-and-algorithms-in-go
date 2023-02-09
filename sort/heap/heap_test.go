@@ -6,17 +6,16 @@ import (
 )
 
 // 堆排序测试
-func TestHeapSort(t *testing.T) {
+func TestSort(t *testing.T) {
 	array := []int{4, 6, 8, 5, 9, 2}
 	fmt.Println("排序前：", array)
 	Sort(array)
 	fmt.Println("排序后：", array)
 }
 
-/*
-=== RUN   TestHeapSort
-排序前： [4 6 8 5 9 2]
-排序后： [9 8 5 4 2 0]
---- PASS: TestHeapSort (0.00s)
-PASS
-*/
+func BenchmarkSort(b *testing.B) {
+	array := []int{4, 6, 8, 5, 9, 2}
+	for i := 0; i < b.N; i++ {
+		Sort(array)
+	}
+}
