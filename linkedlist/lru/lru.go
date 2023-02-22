@@ -19,6 +19,7 @@ package lru
 import (
 	"container/list"
 	"errors"
+	"sync"
 )
 
 // EvictCallBack is used to get a callback when a cache element is evicted
@@ -29,6 +30,8 @@ type LRU struct {
 	evictList *list.List
 	items     map[interface{}]*list.Element
 	onEvict   EvictCallBack
+	maxCap    int
+	lock      sync.Mutex
 }
 
 type entry struct {
@@ -36,10 +39,11 @@ type entry struct {
 	value interface{}
 }
 
-func NewLRU(size int, onEvict EvictCallBack) (*LRU, error) {
-	if size <= 0 {
+func New(size int, onEvict EvictCallBack) (*LRU, error) {
+	if size < 0 {
 		return nil, errors.New("size must bigger than 0")
 	}
+	// todo if size is 0,will use max cap
 	c := &LRU{
 		size:      size,
 		evictList: list.New(),
@@ -78,64 +82,61 @@ func (c *LRU) Add(key, value interface{}) (evicted bool) {
 	return evict
 }
 
-func (c *LRU) Get(key interface{}) (value interface{},ok bool)  {
-	if ent,ok := c.items[key];ok{
+func (c *LRU) Get(key interface{}) (value interface{}, ok bool) {
+	if ent, ok := c.items[key]; ok {
 		c.evictList.MoveToFront(ent)
-		if ent.Value.(*entry) == nil{
-			return nil,false
+		if ent.Value.(*entry) == nil {
+			return nil, false
 		}
-		return ent.Value.(*entry).value,true
+		return ent.Value.(*entry).value, true
 	}
 	return
 }
 
-func (c *LRU) Contains(key interface{}) (ok bool){
-	_,ok = c.items[key]
+func (c *LRU) Contains(key interface{}) (ok bool) {
+	_, ok = c.items[key]
 	return
 }
 
-func (c *LRU) Peek(key interface{}) (value interface{},ok bool){
+func (c *LRU) Peek(key interface{}) (value interface{}, ok bool) {
 	var ent *list.Element
-	if ent,ok = c.items[key];ok{
-		return ent.Value.(*entry).value,true
+	if ent, ok = c.items[key]; ok {
+		return ent.Value.(*entry).value, true
 	}
-	return nil,ok
+	return nil, ok
 }
 
-func (c *LRU) Remove(key interface{}) (present bool){
-	if ent,ok := c.items[key];ok{
+func (c *LRU) Remove(key interface{}) (present bool) {
+	if ent, ok := c.items[key]; ok {
 		c.removeElement(ent)
 		return true
 	}
 	return false
 }
 
-func (c *LRU) RemoveOldest() (key,value interface{} ,ok bool){
+func (c *LRU) RemoveOldest() (key, value interface{}, ok bool) {
 	ent := c.evictList.Back()
-	if ent != nil{
+	if ent != nil {
 		c.removeElement(ent)
 		kv := ent.Value.(*entry)
-		return kv.key,kv.value,true
+		return kv.key, kv.value, true
 	}
-	return nil,nil,false
+	return nil, nil, false
 }
 
-
-func (c *LRU) GetOldest() (key,value interface{},ok bool){
+func (c *LRU) GetOldest() (key, value interface{}, ok bool) {
 	ent := c.evictList.Back()
-	if ent != nil{
+	if ent != nil {
 		kv := ent.Value.(*entry)
-		return kv.key,kv.value,true
+		return kv.key, kv.value, true
 	}
-	return nil,nil,false
+	return nil, nil, false
 }
 
-
-
-func (c *LRU) Keys() []interface{}{
-	keys := make([]interface{},len(c.items))
+func (c *LRU) Keys() []interface{} {
+	keys := make([]interface{}, len(c.items))
 	i := 0
-	for ent := c.evictList.Back();ent != nil;ent = ent.Prev(){
+	for ent := c.evictList.Back(); ent != nil; ent = ent.Prev() {
 		keys[i] = ent.Value.(*entry).key
 		i++
 	}
